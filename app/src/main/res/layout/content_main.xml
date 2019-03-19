@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.rodpro.navigationdrawer.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/login_spin_kitA"
+            style="@style/SpinKitView.Pulse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            app:SpinKit_Color="@color/colorPrimaryDark" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/login_spin_kitB"
+            style="@style/SpinKitView.Pulse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            app:SpinKit_Color="@color/colorPrimaryDark" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/login_spin_kitC"
+            style="@style/SpinKitView.Pulse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            app:SpinKit_Color="@color/colorPrimaryDark" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/login_spin_kitD"
+            style="@style/SpinKitView.Pulse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            app:SpinKit_Color="@color/colorPrimaryDark" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/login_spin_kitE"
+        style="@style/SpinKitView.Pulse"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        app:SpinKit_Color="@color/colorPrimaryDark" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/login_spin_kitF"
+            style="@style/SpinKitView.Pulse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            app:SpinKit_Color="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Switch
+            android:id="@+id/switchScooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Activas  "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <Switch
+            android:id="@+id/switchPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Personal  "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <Switch
+            android:id="@+id/switchLowBat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Low Battery  "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <Switch
+            android:id="@+id/switchMantenimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Mantenimiento "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <Switch
+            android:id="@+id/switchTransporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Transporte  "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <Switch
+            android:id="@+id/switchClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:text="Clear  "
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
