@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,12 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import static com.example.rodpro.navigationdrawer.R.id.sScooter;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Switch sA,sP,sLB,sM,sT,sC,ssA,ssP,ssLB,ssM,ssT,ssC;
     private ProgressBar pb_A, pb_B, pb_C, pb_D, pb_E, pb_F;
+    private NavigationView navigationView;
 
 
     @Override
@@ -32,6 +37,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         pb_A = findViewById(R.id.login_spin_kitA);
         pb_B = findViewById(R.id.login_spin_kitB);
         pb_C = findViewById(R.id.login_spin_kitC);
@@ -39,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         pb_E = findViewById(R.id.login_spin_kitE);
         pb_F = findViewById(R.id.login_spin_kitF);
 
-        ssA = findViewById(R.id.sScooter);
+        ssA = findViewById(sScooter);
         ssP = findViewById(R.id.sPersonal);
         ssLB = findViewById(R.id.sLowBat);
         ssM = findViewById(R.id.sMantenimiento);
@@ -52,6 +60,11 @@ public class MainActivity extends AppCompatActivity
         sM = findViewById(R.id.switchMantenimiento);
         sT = findViewById(R.id.switchTransporte);
         sC = findViewById(R.id.switchClear);
+
+        ssA = navigationView.getHeaderView(0).findViewById(R.id.sScooter);
+        ssA.setOnClickListener(this);
+        ssP = navigationView.getHeaderView(0).findViewById(R.id.sPersonal);
+        ssP.setOnClickListener(this);
 
         loadPreferences();
 
@@ -73,6 +86,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
+
+
+        /*ssA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                visualProgresBar(ssA.isChecked(),pb_A);
+            }
+        });*/
     }
 
     @Override
@@ -136,9 +157,11 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()){
 
-            case R.id.sScooter:
-                //savePreferences("stateA",sA.isChecked());
+            case (R.id.sScooter):
                 visualProgresBar(ssA.isChecked(),pb_A);
+                break;
+            case (R.id.sPersonal):
+                visualProgresBar(ssP.isChecked(),pb_B);
                 break;
 
             case R.id.switchScooter:
@@ -149,7 +172,7 @@ public class MainActivity extends AppCompatActivity
                 savePreferences("stateP",sP.isChecked());
                 visualProgresBar(sP.isChecked(),pb_B);
                 break;
-            case R.id.switchLowBat:
+            /*case R.id.switchLowBat:
                 savePreferences("stateLB",sLB.isChecked());
                 visualProgresBar(sLB.isChecked(),pb_C);
                 break;
@@ -165,13 +188,14 @@ public class MainActivity extends AppCompatActivity
                 savePreferences("stateC",sC.isChecked());
                 visualProgresBar(sC.isChecked(),pb_F);
                 break;
-
+                */
                 default:
                 break;
         }
     }
 
     private void visualProgresBar(boolean state, ProgressBar p_bar) {
+        Log.i("state", "state");
         if (state){
             p_bar.setVisibility(View.VISIBLE);
         }else {
