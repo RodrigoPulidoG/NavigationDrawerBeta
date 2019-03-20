@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import static com.example.rodpro.navigationdrawer.R.id.sScooter;
 
@@ -175,6 +174,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case (R.id.sClear):
                 visualProgresBar(ssC.isChecked(),pb_F);
+                clearAllSwitches(ssC.isChecked());
                 break;
 
             case R.id.switchScooter:
@@ -201,12 +201,26 @@ public class MainActivity extends AppCompatActivity
             case R.id.switchClear:
                 savePreferences("stateC",sC.isChecked());
                 visualProgresBar(sC.isChecked(),pb_F);
-
+                clearAllSwitches(sC.isChecked());
                 break;
 
                 default:
                 break;
         }
+    }
+
+    private void clearAllSwitches(boolean stado) {
+        if (stado){
+            ssA.setChecked(false);
+            sA.setChecked(false);
+        }
+        ssC.setChecked(false);
+        sC.setChecked(false);
+
+        //ssP.setChecked(false);
+        //ssLB.setChecked(false);
+        //ssM.setChecked(false);
+        //ssT.setChecked(false);
     }
 
     private void visualProgresBar(boolean state, ProgressBar p_bar) {
