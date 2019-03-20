@@ -20,12 +20,13 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 
 import static com.example.rodpro.navigationdrawer.R.id.sScooter;
+import static com.example.rodpro.navigationdrawer.R.id.spacer;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Switch sA,sP,sLB,sM,sT,sC,ssA,ssP,ssLB,ssM,ssT,ssC;
-    private ProgressBar pb_A, pb_B, pb_C, pb_D, pb_E, pb_F;
+    private ProgressBar pb_A, pb_B, pb_C, pb_D, pb_E;
     private NavigationView navigationView;
 
 
@@ -44,14 +45,6 @@ public class MainActivity extends AppCompatActivity
         pb_C = findViewById(R.id.login_spin_kitC);
         pb_D = findViewById(R.id.login_spin_kitD);
         pb_E = findViewById(R.id.login_spin_kitE);
-        pb_F = findViewById(R.id.login_spin_kitF);
-
-        ssA = findViewById(sScooter);
-        ssP = findViewById(R.id.sPersonal);
-        ssLB = findViewById(R.id.sLowBat);
-        ssM = findViewById(R.id.sMantenimiento);
-        ssT = findViewById(R.id.sTransporte);
-        ssC = findViewById(R.id.sClear);
 
         sA = findViewById(R.id.switchScooter);
         sP = findViewById(R.id.switchPersonal);
@@ -173,7 +166,6 @@ public class MainActivity extends AppCompatActivity
                 visualProgresBar(ssT.isChecked(),pb_E);
                 break;
             case (R.id.sClear):
-                visualProgresBar(ssC.isChecked(),pb_F);
                 clearAllSwitches(ssC.isChecked());
                 break;
 
@@ -200,7 +192,6 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.switchClear:
                 savePreferences("stateC",sC.isChecked());
-                visualProgresBar(sC.isChecked(),pb_F);
                 clearAllSwitches(sC.isChecked());
                 break;
 
@@ -212,15 +203,29 @@ public class MainActivity extends AppCompatActivity
     private void clearAllSwitches(boolean stado) {
         if (stado){
             ssA.setChecked(false);
+            ssP.setChecked(false);
+            ssLB.setChecked(false);
+            ssM.setChecked(false);
+            ssT.setChecked(false);
             sA.setChecked(false);
+            sP.setChecked(false);
+            sLB.setChecked(false);
+            sM.setChecked(false);
+            sT.setChecked(false);
         }
         ssC.setChecked(false);
         sC.setChecked(false);
 
-        //ssP.setChecked(false);
-        //ssLB.setChecked(false);
-        //ssM.setChecked(false);
-        //ssT.setChecked(false);
+        visualProgresBar(ssA.isChecked(),pb_A);
+        visualProgresBar(ssP.isChecked(),pb_B);
+        visualProgresBar(ssLB.isChecked(),pb_C);
+        visualProgresBar(ssM.isChecked(),pb_D);
+        visualProgresBar(ssT.isChecked(),pb_E);
+        visualProgresBar(sA.isChecked(),pb_A);
+        visualProgresBar(sP.isChecked(),pb_B);
+        visualProgresBar(sLB.isChecked(),pb_C);
+        visualProgresBar(sM.isChecked(),pb_D);
+        visualProgresBar(sT.isChecked(),pb_E);
     }
 
     private void visualProgresBar(boolean state, ProgressBar p_bar) {

@@ -56,14 +56,6 @@
         android:layout_marginTop="12dp"
         app:SpinKit_Color="@color/colorPrimaryDark" />
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/login_spin_kitF"
-            style="@style/SpinKitView.Pulse"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"
-            app:SpinKit_Color="@color/colorPrimaryDark" />
-
     </LinearLayout>
 
 
