@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity
         ssA.setOnClickListener(this);
         ssP = navigationView.getHeaderView(0).findViewById(R.id.sPersonal);
         ssP.setOnClickListener(this);
+        ssC = navigationView.getHeaderView(0).findViewById(R.id.sClear);
+        ssC.setOnClickListener(this);
 
         loadPreferences();
 
@@ -163,6 +165,10 @@ public class MainActivity extends AppCompatActivity
             case (R.id.sPersonal):
                 visualProgresBar(ssP.isChecked(),pb_B);
                 break;
+            case (R.id.sClear):
+                visualProgresBar(ssC.isChecked(),pb_F);
+                clearAllSwitches(ssC.isChecked());
+                break;
 
             case R.id.switchScooter:
                 savePreferences("stateA",sA.isChecked());
@@ -187,7 +193,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.switchClear:
                 savePreferences("stateC",sC.isChecked());
                 visualProgresBar(sC.isChecked(),pb_F);
-                clearAllSwitches();
+                clearAllSwitches(sC.isChecked());
                 break;
 
                 default:
@@ -195,8 +201,18 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void clearAllSwitches() {
-        
+    private void clearAllSwitches(boolean stado) {
+        if (stado){
+            ssA.setChecked(false);
+            sA.setChecked(false);
+        }
+        ssC.setChecked(false);
+        sC.setChecked(false);
+
+        //ssP.setChecked(false);
+        //ssLB.setChecked(false);
+        //ssM.setChecked(false);
+        //ssT.setChecked(false);
     }
 
     private void visualProgresBar(boolean state, ProgressBar p_bar) {
