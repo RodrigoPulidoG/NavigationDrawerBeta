@@ -62,9 +62,18 @@ public class MainActivity extends AppCompatActivity
         sC = findViewById(R.id.switchClear);
 
         ssA = navigationView.getHeaderView(0).findViewById(R.id.sScooter);
-        ssA.setOnClickListener(this);
         ssP = navigationView.getHeaderView(0).findViewById(R.id.sPersonal);
+        ssLB = navigationView.getHeaderView(0).findViewById(R.id.sLowBat);
+        ssM = navigationView.getHeaderView(0).findViewById(R.id.sMantenimiento);
+        ssT = navigationView.getHeaderView(0).findViewById(R.id.sTransporte);
+        ssC = navigationView.getHeaderView(0).findViewById(R.id.sClear);
+
+        ssA.setOnClickListener(this);
         ssP.setOnClickListener(this);
+        ssLB.setOnClickListener(this);
+        ssM.setOnClickListener(this);
+        ssT.setOnClickListener(this);
+        ssC.setOnClickListener(this);
 
         loadPreferences();
 
@@ -86,14 +95,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
-
-
-        /*ssA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                visualProgresBar(ssA.isChecked(),pb_A);
-            }
-        });*/
     }
 
     @Override
@@ -163,6 +164,18 @@ public class MainActivity extends AppCompatActivity
             case (R.id.sPersonal):
                 visualProgresBar(ssP.isChecked(),pb_B);
                 break;
+            case (R.id.sLowBat):
+                visualProgresBar(ssLB.isChecked(),pb_C);
+                break;
+            case (R.id.sMantenimiento):
+                visualProgresBar(ssM.isChecked(),pb_D);
+                break;
+            case (R.id.sTransporte):
+                visualProgresBar(ssT.isChecked(),pb_E);
+                break;
+            case (R.id.sClear):
+                visualProgresBar(ssC.isChecked(),pb_F);
+                break;
 
             case R.id.switchScooter:
                 savePreferences("stateA",sA.isChecked());
@@ -172,7 +185,7 @@ public class MainActivity extends AppCompatActivity
                 savePreferences("stateP",sP.isChecked());
                 visualProgresBar(sP.isChecked(),pb_B);
                 break;
-            /*case R.id.switchLowBat:
+            case R.id.switchLowBat:
                 savePreferences("stateLB",sLB.isChecked());
                 visualProgresBar(sLB.isChecked(),pb_C);
                 break;
@@ -184,11 +197,13 @@ public class MainActivity extends AppCompatActivity
                 savePreferences("stateT",sT.isChecked());
                 visualProgresBar(sT.isChecked(),pb_E);
                 break;
+
             case R.id.switchClear:
                 savePreferences("stateC",sC.isChecked());
                 visualProgresBar(sC.isChecked(),pb_F);
+
                 break;
-                */
+
                 default:
                 break;
         }
