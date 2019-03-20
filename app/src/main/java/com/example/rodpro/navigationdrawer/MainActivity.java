@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity
                 savePreferences("stateP",sP.isChecked());
                 visualProgresBar(sP.isChecked(),pb_B);
                 break;
-            /*case R.id.switchLowBat:
+            case R.id.switchLowBat:
                 savePreferences("stateLB",sLB.isChecked());
                 visualProgresBar(sLB.isChecked(),pb_C);
                 break;
@@ -187,11 +187,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.switchClear:
                 savePreferences("stateC",sC.isChecked());
                 visualProgresBar(sC.isChecked(),pb_F);
+                clearAllSwitches();
                 break;
-                */
+
                 default:
                 break;
         }
+    }
+
+    private void clearAllSwitches() {
+        
     }
 
     private void visualProgresBar(boolean state, ProgressBar p_bar) {
