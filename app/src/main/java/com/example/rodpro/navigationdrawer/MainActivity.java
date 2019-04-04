@@ -16,9 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 
+import static com.example.rodpro.navigationdrawer.R.id.drawer_layout;
 import static com.example.rodpro.navigationdrawer.R.id.sScooter;
 import static com.example.rodpro.navigationdrawer.R.id.spacer;
 
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity
     private Switch sA,sP,sLB,sM,sT,sC,ssA,ssP,ssLB,ssM,ssT,ssC;
     private ProgressBar pb_A, pb_B, pb_C, pb_D, pb_E;
     private NavigationView navigationView;
+    private Button boton;
+    private DrawerLayout midrawer;
 
 
     @Override
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        boton = findViewById(R.id.boton);
+        midrawer = findViewById(R.id.drawer_layout);
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -133,9 +140,11 @@ public class MainActivity extends AppCompatActivity
             Intent intentMap = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(intentMap);
         } else if (id == R.id.nav_slideshow) {
-
+            Intent intentMap = new Intent(getApplicationContext(), Main2Activity.class);
+            startActivity(intentMap);
         } else if (id == R.id.nav_manage) {
-
+            Intent intentMap = new Intent(getApplicationContext(), Main2Activity.class);
+            startActivity(intentMap);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -149,6 +158,10 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick(View view) {
         switch (view.getId()){
+
+            case (R.id.boton):
+                midrawer.openDrawer(GravityCompat.START);
+                break;
 
             case (R.id.sScooter):
                 visualProgresBar(ssA.isChecked(),pb_A);
