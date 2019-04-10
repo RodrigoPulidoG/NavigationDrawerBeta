@@ -17,17 +17,17 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Activity_Prueba" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_gridView"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="GridView" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_recycler"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Recycler" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

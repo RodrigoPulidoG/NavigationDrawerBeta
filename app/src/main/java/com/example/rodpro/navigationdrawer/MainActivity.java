@@ -142,10 +142,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             Intent intentMap = new Intent(getApplicationContext(), Main2Activity.class);
             startActivity(intentMap);
-        } else if (id == R.id.nav_manage) {
-            Intent intentMap = new Intent(getApplicationContext(), Main2Activity.class);
-            startActivity(intentMap);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_gridView) {
+            Intent intentGrid = new Intent(getApplicationContext(), GridActivity.class);
+            startActivity(intentGrid);
+        } else if (id == R.id.nav_recycler) {
+            Intent intentRecycler = new Intent(getApplicationContext(), RecyclerActivity.class);
+            startActivity(intentRecycler);
 
         } else if (id == R.id.nav_send) {
 
