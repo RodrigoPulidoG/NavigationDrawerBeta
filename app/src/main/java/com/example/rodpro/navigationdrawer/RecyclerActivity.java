@@ -3,22 +3,20 @@ package com.example.rodpro.navigationdrawer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Modelos.Movie;
+
 public class RecyclerActivity extends AppCompatActivity {
 
-    private List<String> names;
+    private List<Movie> movies;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -29,17 +27,17 @@ public class RecyclerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
-        names = this.getAllNames();
+        movies = this.getAllMovies();
         recyclerView = findViewById(R.id.nav_recycler);
         layoutManager = new LinearLayoutManager(this);
-        layoutManager = new GridLayoutManager(this, 2);
-        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
+        //layoutManager = new GridLayoutManager(this, 2);
+        //layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
 
-        adapter = new MyRecyclerViewAdapter(names, R.layout.recycler_view_item, new MyRecyclerViewAdapter.OnItemClickListener() {
+        adapter = new MyRecyclerViewAdapter(movies, R.layout.recycler_view_item, new MyRecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(String name, int position) {
-                //Toast.makeText(RecyclerActivity.this,name+" - "+position,Toast.LENGTH_SHORT).show();
-                deleteName(position);
+            public void onItemClick(Movie movie, int position) {
+                Toast.makeText(RecyclerActivity.this,movie+" - "+position,Toast.LENGTH_SHORT).show();
+                removeMovie(position);
             }
         });
 
@@ -63,31 +61,31 @@ public class RecyclerActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.add_name:
                 Toast.makeText(RecyclerActivity.this,"Add",Toast.LENGTH_SHORT).show();
-                this.addName(0);
+                this.addMovie(0);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void addName(int position) {
-        names.add(position, "New name "+(++counter));
+    private void addMovie(int position) {
+        movies.add(position, new Movie("New Image " +(++counter),R.drawable.movienew));
         adapter.notifyItemInserted(position);
         layoutManager.scrollToPosition(position);
     }
 
-    private void deleteName(int position){
-        names.remove(position);
+    private void removeMovie(int position){
+        Toast.makeText(RecyclerActivity.this,"del",Toast.LENGTH_SHORT).show();
+        movies.remove(position);
         adapter.notifyItemRemoved(position);
     }
 
-    private List<String> getAllNames(){
-        return new ArrayList<String>(){{
-            add("nombreUno");
-            add("nombreDos");
-            add("nombreTres");
-            add("nombreCuatro");
-            add("nombreCinco");
+    private List<Movie> getAllMovies(){
+        return new ArrayList<Movie>(){{
+            add(new Movie("Lechuga Uno",R.drawable.movie1));
+            add(new Movie("Lechuga Dos",R.drawable.movie2));
+            add(new Movie("Lechuga Tres",R.drawable.movie3));
+            add(new Movie("Lechuga Cuatro",R.drawable.movie4));
         }};
     }
 }
